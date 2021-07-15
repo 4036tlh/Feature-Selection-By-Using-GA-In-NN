@@ -1,0 +1,62 @@
+
+population size = 40
+gene size	= 60
+mutation probability  = 0.8
+crossover probability = 0.2
+number of generation  = 30
+
+fitness = validation accuracy from NN model(99% weight) + number of selected attributes(1% weight) 
+(best:1, worst:0)
+
+Fitness = 0.99*A + 0.01*(60-N)/59   best= 1 , worst = 0 , thersold = 0.8314
+A = Accuracy
+N = Number of selected attributes
+
+thersold(the validation accuracy with all 60 attributes involve) = 0.831
+
+
+Process:
+
+1- Initialize 	
+	|-initializePopulation() === produce 10 chromosome in random
+
+2- Evaluation
+	|-evaluateChromosome() === run cal_fitness() & get the fitness from "result.txt"
+		|-cal_fitness() === run saveIntoFile() & run 'NN.py' to calculate the fitness
+			|	=== the fitness will be store in "result.txt"
+			|	* A text file called "history.txt"is used to store the chromosome ID and their fitness
+			|	* Hence we don't need to wasting time on calculating it again
+			|	* The ID is the decimal form of the 60 bits-binary number(the code of the chromosome)
+			|-saveIntoFile() === save the chromosomes into "gene.txt"
+
+3- Record
+	|-record() === record the best fitness, average fitness & best chromosome into 3 txt
+		|-calcAvgFitness() === calculate the average and record inside c++
+		|-findBestFitness() === find best fitness and record inside c++
+	Save into txt :
+		-avgFitnessFile
+		-bestChromosomeFile
+		-bestFitnessFile
+	*The record is prepare for plotting out the graph
+
+4- Parent selection	(tournament selection with size 2)
+	|-parentSelection() === select 2 parents from the last generation chromosomes
+
+5- Crossover	(2-point crossover)
+	|-crossover()
+
+6- Mutation	(2-point mutation)
+	|-mutation() 
+
+7- Survival selection
+	|-survivalSelection() === transfer the new children into newChromosome
+	|-copyChromosome() === transfer the newChromosome into chromosomes
+	*newChromosome is just a temp
+
+8- run 'plot_graph.py' to plot the graph
+
+For every generation, step 2,3,4,5,6,7 will repeat 5 times
+every times will produce 2 new chromosome, lastly will have 10 new chromosomes
+and finally replace all the old chromosomes with the new 10 
+
+
