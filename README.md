@@ -8,8 +8,7 @@ As there may have some dataset with too many attributes related, some is useful 
 Tournament Selection is used in the parent selection process. 2 random individuals will be selected from the population, the one with higher fitness will be kept to be a parent. This process will be repeated to select the second parent and it will stop if the two selected parents are not from the same position (it is possible that a chromosome appears multiple times in the same generation). <br/>
 
 ### Crossover
-Crossover function is working as a convergence operation to pull the population towards a better performance by extracting the useful genes. The way of getting the new
-chromosome is by recombination where we use 2-point crossover. 2 random points will be
+Crossover function is working as a convergence operation to pull the population towards a better performance by extracting the useful genes. The way of getting the new chromosome is by recombination where we use 2-point crossover. 2 random points will be
 selected and cut to do crossing between 2 parents to form 2 new children. <br/>
 <img src="./img/crossover.JPG">
 
