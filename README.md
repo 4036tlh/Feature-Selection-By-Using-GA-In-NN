@@ -27,10 +27,10 @@ The GA training will be terminated under 2 conditions:
 - 
 ## Preview Image
 Training result before filter attributes: <br/>
-<img src="./img/Before GA.PNG">
+<img src="./img/Before GA.png">
 
 Training result after filter attributes: <br/>
-<img src="./img/After GA.PNG">
+<img src="./img/After GA.png">
 
 Comparing result: <br/>
 <img src="./img/compare.JPG">
